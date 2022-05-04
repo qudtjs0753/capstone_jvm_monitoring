@@ -1,0 +1,13 @@
+filebeat.inputs:
+  - type: filestream
+    enabled: true
+
+    paths:
+      - /usr/share/appication/log/info/*.log
+
+setup.kibana:
+  host: "localhost:5601"
+
+output.logstash:
+  enabled: true
+  hosts: ["logstash:5044"]

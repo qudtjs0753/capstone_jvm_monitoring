@@ -36,7 +36,7 @@ services:
       - "9200:9200"
       - "9300:9300"
     environment:
-      ES_JAVA_OPTS: -Xmx256m -Xms256m
+      ES_JAVA_OPTS: -Xmx2g -Xms2g
       # Bootstrap password.
       # Used to initialize the keystore during the initial startup of
       # Elasticsearch. Ignored on subsequent runs.
@@ -59,9 +59,8 @@ services:
       - "5044:5044"
       - "5000:5000/tcp"
       - "5000:5000/udp"
-      - "9600:9600"
     environment:
-      LS_JAVA_OPTS: -Xmx256m -Xms256m
+      LS_JAVA_OPTS: -Xmx1g -Xms1g
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
     networks:
       - elk
@@ -88,6 +87,35 @@ services:
       - elk
     depends_on:
       - elasticsearch
+  filebeat:
+    build:
+      context: filebeat/
+      args:
+        ELASTIC_VERSION: ${ELASTIC_VERSION}
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/config/filebeat.yml:ro,Z
+      - application:/usr/share/application:rw,Z
+    environment:
+      ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
+      LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
+      KIBANA_SYSTEM_PASSWORD: ${KIBANA_SYSTEM_PASSWORD:-}
+    networks: 
+      - elk
+    depends_on:
+      - logstash
+
+  application:
+    build:
+      context: application/
+    volumes:
+      - ./application/log:/usr/share/application/log:rw,Z
+      - application:/usr/share/application:rw,Z
+    ports:
+      - "8080:8080"
+    networks:
+      - elk
+    depends_on:
+      - filebeat
 
 networks:
   elk:
@@ -96,3 +124,4 @@ networks:
 volumes:
   setup:
   elasticsearch:
+  application:
