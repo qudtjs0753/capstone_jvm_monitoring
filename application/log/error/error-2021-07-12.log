@@ -1,0 +1,2 @@
+[2021-07-12 23:14:40:15402] [32m[http-nio-8080-exec-2][0;39m [1;31mERROR[0;39m [1;37m[com.livenow.slf4jlogbacklab.Slf4jRestControllerAdvice.notFoundException:[33m33[0;39m][0;39m - CommonException: NotFoundException: Cannot find Team by input value. Input: 좋은 팀
+[2021-07-12 23:14:42:17670] [32m[http-nio-8080-exec-4][0;39m [1;31mERROR[0;39m [1;37m[com.livenow.slf4jlogbacklab.Slf4jRestControllerAdvice.notFoundException:[33m33[0;39m][0;39m - CommonException: NotFoundException: Cannot find Team by input value. Input: 좋은 팀
