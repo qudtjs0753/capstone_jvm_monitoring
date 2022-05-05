@@ -5,12 +5,13 @@ import com.livenow.slf4jlogbacklab.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Logger;
+
 @RestController
 @RequestMapping("/api/v1/members")
 public class MemberController {
-
+    private final Logger log = Logger.getGlobal();
     private final MemberService memberService;
-
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
     }
@@ -19,5 +20,10 @@ public class MemberController {
     @ResponseStatus(HttpStatus.CREATED)
     public void save(@RequestBody MemberRequest request) {
         memberService.save(request);
+    }
+
+    @PostMapping("/error")
+    public void getErrorMessage() {
+        log.severe("Error log");
     }
 }

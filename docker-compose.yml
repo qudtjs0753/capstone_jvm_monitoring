@@ -57,8 +57,6 @@ services:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
     ports:
       - "5044:5044"
-      - "5000:5000/tcp"
-      - "5000:5000/udp"
     environment:
       LS_JAVA_OPTS: -Xmx1g -Xms1g
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
@@ -92,8 +90,10 @@ services:
       context: filebeat/
       args:
         ELASTIC_VERSION: ${ELASTIC_VERSION}
+    # windows DACL
+    entrypoint: "filebeat -e -strict.perms=false"
     volumes:
-      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/config/filebeat.yml:ro,Z
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:rw,Z
       - application:/usr/share/application:rw,Z
     environment:
       ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
@@ -103,12 +103,10 @@ services:
       - elk
     depends_on:
       - logstash
-
   application:
     build:
       context: application/
     volumes:
-      - ./application/log:/usr/share/application/log:rw,Z
       - application:/usr/share/application:rw,Z
     ports:
       - "8080:8080"
