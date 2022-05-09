@@ -13,7 +13,7 @@ services:
     build:
       context: setup/
       args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+        ELASTIC_SEARCH_KIBANA_VERSION: ${ELASTIC_SEARCH_KIBANA_VERSION}
     init: true
     volumes:
       - setup:/state:Z
@@ -28,7 +28,7 @@ services:
     build:
       context: elasticsearch/
       args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+        ELASTIC_SEARCH_KIBANA_VERSION: ${ELASTIC_SEARCH_KIBANA_VERSION}
     volumes:
       - ./elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro,z
       - elasticsearch:/usr/share/elasticsearch/data:z
@@ -51,7 +51,7 @@ services:
     build:
       context: logstash/
       args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+        LOGSTASH_FILEBEAT_VERSION: ${LOGSTASH_FILEBEAT_VERSION}
     volumes:
       - ./logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro,Z
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
@@ -69,7 +69,7 @@ services:
     build:
       context: kibana/
       args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+        ELASTIC_SEARCH_KIBANA_VERSION: ${ELASTIC_SEARCH_KIBANA_VERSION}
     volumes:
     # Z: 다른 container에 공유한다는 옵션
     # ro : read-only
@@ -89,7 +89,7 @@ services:
     build:
       context: filebeat/
       args:
-        ELASTIC_VERSION: ${ELASTIC_VERSION}
+        LOGSTASH_FILEBEAT_VERSION: ${LOGSTASH_FILEBEAT_VERSION}
     # windows DACL
     entrypoint: "filebeat -e -strict.perms=false"
     volumes:
