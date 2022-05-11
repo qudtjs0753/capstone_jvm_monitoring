@@ -6,8 +6,16 @@ filebeat.inputs:
   enabled: true
   paths:
     - /usr/share/application/log/error/*.log
-    - /usr/share/application/log/info/*.log
-    - /usr/share/application/log/warn/*.log
+  parsers:
+    - ndjson:
+        keys_under_root: true
+        overwrite_keys: true
+        message_key: log
+    - multiline:
+        type: pattern
+        pattern: '^\[\d+:\d+:\d+[/]\d+[.]\d+[:]'
+        negate: true
+        match: after
 
 setup.kibana:
   host: "localhost:5601"

@@ -2,15 +2,16 @@ package com.livenow.slf4jlogbacklab.controller;
 
 import com.livenow.slf4jlogbacklab.controller.dto.MemberRequest;
 import com.livenow.slf4jlogbacklab.service.MemberService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.logging.Logger;
 
 @RestController
 @RequestMapping("/api/v1/members")
 public class MemberController {
-    private final Logger log = Logger.getGlobal();
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     private final MemberService memberService;
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
@@ -24,6 +25,10 @@ public class MemberController {
 
     @PostMapping("/error")
     public void getErrorMessage() {
-        log.severe("Error log");
+        try{
+            throw new Exception("Error");
+        }catch(Exception e) {
+            logger.error("ErrorMessage", e);
+        }
     }
 }

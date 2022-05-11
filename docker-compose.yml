@@ -57,6 +57,7 @@ services:
       - ./logstash/pipeline:/usr/share/logstash/pipeline:ro,Z
     ports:
       - "5044:5044"
+      - "5000:5000"
     environment:
       LS_JAVA_OPTS: -Xmx1g -Xms1g
       LOGSTASH_INTERNAL_PASSWORD: ${LOGSTASH_INTERNAL_PASSWORD:-}
