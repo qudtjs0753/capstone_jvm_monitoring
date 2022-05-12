@@ -1,7 +1,7 @@
-ARG ELASTIC_VERSION
+ARG ELASTIC_SEARCH_KIBANA_VERSION
 
 # https://www.docker.elastic.co/
-FROM docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION}
+FROM docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_SEARCH_KIBANA_VERSION}
 
 USER root
 
