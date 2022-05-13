@@ -3,6 +3,10 @@ filebeat.inputs:
   #Open distro가 이버전과 호환되는게 없음.
   #다른툴을 선택할 필요성이 있어보임.
 - type: filestream
+  # Include files. A list of regular expressions to match. Filebeat keeps only the files that
+  # are matching any regular expression from the list. By default, no files are dropped.
+#  prospector.scanner.include_files: [ '/usr/share/application/log/error/*.log' ]
+#  prospector.scanner.check_interval: 10s
   enabled: true
   paths:
     - /usr/share/application/log/error/*.log

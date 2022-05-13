@@ -95,6 +95,7 @@ services:
     entrypoint: "filebeat -e -strict.perms=false"
     volumes:
       - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:rw,Z
+      - filebeat:/usr/share/filebeat
       - application:/usr/share/application:rw,Z
     environment:
       ELASTIC_PASSWORD: ${ELASTIC_PASSWORD:-}
@@ -124,3 +125,4 @@ volumes:
   setup:
   elasticsearch:
   application:
+  filebeat:
