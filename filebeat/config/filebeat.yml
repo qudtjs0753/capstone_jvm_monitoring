@@ -1,12 +1,5 @@
 filebeat.inputs:
-  #log type은 7.16.0 버전 이후 deprecate된듯 합니다.
-  #Open distro가 이버전과 호환되는게 없음.
-  #다른툴을 선택할 필요성이 있어보임.
 - type: filestream
-  # Include files. A list of regular expressions to match. Filebeat keeps only the files that
-  # are matching any regular expression from the list. By default, no files are dropped.
-#  prospector.scanner.include_files: [ '/usr/share/application/log/error/*.log' ]
-#  prospector.scanner.check_interval: 10s
   enabled: true
   paths:
     - /usr/share/application/log/error/*.log
@@ -20,6 +13,21 @@ filebeat.inputs:
         pattern: '^\[\d+:\d+:\d+[/]\d+[.]\d+[:]'
         negate: true
         match: after
+
+  # state options
+  # file handler의 timeout 설정.
+  # 설정한 시간 이상으로 파일 읽기 작업을 하지 않으면 핸들러 닫는다.
+  close_inactive: 2m
+
+  #최종 변경일시로 읽기 대상 제외 지정.
+  ignore_older: 1m
+  #clean_inactive에 설정된 시간보다 수정된 시간이 오래되어있으면 registry에서 삭제
+  clean_inactive: 1m
+  #clean_removed : 디스크에서 찾을 수 없는 파일의 정보를 registry에서 삭제.
+  clean_removed: true
+
+processors:
+  - add_locale: ~
 
 setup.kibana:
   host: "localhost:5601"
