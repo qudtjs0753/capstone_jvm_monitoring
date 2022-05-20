@@ -1,4 +1,4 @@
-package com.livenow.slf4jlogbacklab.domain;
+package com.capstone.application.domain;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

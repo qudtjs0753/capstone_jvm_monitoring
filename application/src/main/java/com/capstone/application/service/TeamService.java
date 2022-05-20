@@ -1,10 +1,10 @@
-package com.livenow.slf4jlogbacklab.service;
+package com.capstone.application.service;
 
-import com.livenow.slf4jlogbacklab.common.NotFoundException;
-import com.livenow.slf4jlogbacklab.domain.Member;
-import com.livenow.slf4jlogbacklab.domain.MemberRepository;
-import com.livenow.slf4jlogbacklab.domain.Team;
-import com.livenow.slf4jlogbacklab.domain.TeamRepository;
+import com.capstone.application.common.NotFoundException;
+import com.capstone.application.domain.MemberRepository;
+import com.capstone.application.domain.TeamRepository;
+import com.capstone.application.domain.Member;
+import com.capstone.application.domain.Team;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

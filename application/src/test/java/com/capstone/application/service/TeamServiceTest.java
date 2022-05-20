@@ -1,9 +1,9 @@
-package com.livenow.slf4jlogbacklab.service;
+package com.capstone.application.service;
 
-import com.livenow.slf4jlogbacklab.domain.Member;
-import com.livenow.slf4jlogbacklab.domain.MemberRepository;
-import com.livenow.slf4jlogbacklab.domain.Team;
-import com.livenow.slf4jlogbacklab.domain.TeamRepository;
+import com.capstone.application.domain.Member;
+import com.capstone.application.domain.MemberRepository;
+import com.capstone.application.domain.Team;
+import com.capstone.application.domain.TeamRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

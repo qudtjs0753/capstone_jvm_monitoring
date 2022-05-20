@@ -1,8 +1,8 @@
-package com.livenow.slf4jlogbacklab.service;
+package com.capstone.application.service;
 
-import com.livenow.slf4jlogbacklab.controller.dto.MemberRequest;
-import com.livenow.slf4jlogbacklab.domain.Member;
-import com.livenow.slf4jlogbacklab.domain.MemberRepository;
+import com.capstone.application.domain.MemberRepository;
+import com.capstone.application.controller.dto.MemberRequest;
+import com.capstone.application.domain.Member;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

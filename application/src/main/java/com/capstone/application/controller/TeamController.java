@@ -1,6 +1,6 @@
-package com.livenow.slf4jlogbacklab.controller;
+package com.capstone.application.controller;
 
-import com.livenow.slf4jlogbacklab.service.TeamService;
+import com.capstone.application.service.TeamService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
