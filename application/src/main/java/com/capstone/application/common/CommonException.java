@@ -1,4 +1,4 @@
-package com.livenow.slf4jlogbacklab.common;
+package com.capstone.application.common;
 
 public class CommonException extends RuntimeException {
     public CommonException(String message) {

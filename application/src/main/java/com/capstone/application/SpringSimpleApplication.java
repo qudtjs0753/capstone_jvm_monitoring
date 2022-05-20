@@ -1,12 +1,12 @@
-package com.livenow.slf4jlogbacklab;
+package com.capstone.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Slf4jLogbackLabApplication {
+public class SpringSimpleApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Slf4jLogbackLabApplication.class, args);
+        SpringApplication.run(SpringSimpleApplication.class, args);
     }
 }

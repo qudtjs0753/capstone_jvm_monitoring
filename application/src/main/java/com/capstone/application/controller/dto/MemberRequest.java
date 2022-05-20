@@ -1,6 +1,6 @@
-package com.livenow.slf4jlogbacklab.controller.dto;
+package com.capstone.application.controller.dto;
 
-import com.livenow.slf4jlogbacklab.domain.Member;
+import com.capstone.application.domain.Member;
 
 public class MemberRequest {
 

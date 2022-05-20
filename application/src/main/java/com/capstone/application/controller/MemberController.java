@@ -1,7 +1,7 @@
-package com.livenow.slf4jlogbacklab.controller;
+package com.capstone.application.controller;
 
-import com.livenow.slf4jlogbacklab.controller.dto.MemberRequest;
-import com.livenow.slf4jlogbacklab.service.MemberService;
+import com.capstone.application.controller.dto.MemberRequest;
+import com.capstone.application.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
