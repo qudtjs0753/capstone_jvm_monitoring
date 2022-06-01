@@ -21,7 +21,7 @@ management:
         host: "http://elasticsearch:9200"
         index: micrometer
         auto-create-index: true
-        step: 10s
+        step: 5s
         distribution:
           percentiles-histogram:
             http:
